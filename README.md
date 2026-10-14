@@ -1,73 +1,97 @@
-# co handoff
-
-**Hand your Claude Code or Codex session to someone else's AI, and get the work back.**
-
-You spent the afternoon working something out with your coding agent, and now someone else should carry it on. `co handoff` sends them the session itself:
-- every message you wrote, word for word;
-- your AI's replies;
-- where the code is.
-
-They paste one line into Codex or Claude Code, and their agent picks up where yours stopped. When the session doesn't answer something, their agent asks yours. When the work is done, it comes back to you as a patch.
+<p align="center">
+  <img src="assets/banner.png" alt="handoff: pass your AI session to a teammate, get the work back" width="100%">
+</p>
 
 <p align="center">
-  <img src="assets/viewer-desktop.png" width="68%" alt="A handoff page: who passed you the task, one button to copy it into Codex, and what was discussed">
-  <img src="assets/viewer-phone.png" width="24%" alt="The same page on a phone">
+  <a href="#install"><img alt="npx skills add openonion/handoff" src="https://img.shields.io/badge/npx_skills_add-openonion%2Fhandoff-0b8a3c?style=flat-square"></a>
+  <img alt="Works with Claude Code" src="https://img.shields.io/badge/Claude_Code-works-0d1b14?style=flat-square">
+  <img alt="Works with Codex" src="https://img.shields.io/badge/Codex-works-0d1b14?style=flat-square">
+  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-0b8a3c?style=flat-square"></a>
+  <a href="https://discord.gg/4xfD9k8AUF"><img alt="Discord" src="https://img.shields.io/badge/Discord-join-0b8a3c?style=flat-square"></a>
 </p>
-<p align="center"><sub>An example handoff page. The person you send it to reads this before installing anything.</sub></p>
 
-## Send one
+You spent the afternoon getting somewhere with your coding agent. Now someone else should carry it on, and the usual handover is a Slack essay that leaves out half of what you and the AI figured out.
 
-```bash
-pip install --upgrade --pre connectonion            # co handoff ships in the 1.9.2 preview
-co handoff send bob@example.com "the slugify rules"  # preview: exactly what will leave
-co handoff send bob@example.com --draft ho-1a2b3c4d --yes
-```
+**handoff sends them the session itself.** That means every message you wrote, word for word, your AI's replies, and where the code is. They paste one line into Codex or Claude Code, and their agent picks up exactly where yours stopped. Anything the session doesn't answer, their agent asks yours. When the work is done, it comes back to you as a patch.
 
-- Run it in the folder where you worked; it finds the session there.
-- The preview prints everything that will leave your machine, and nothing goes until you add `--yes`.
-- The mail goes from your own Gmail or Outlook (`co auth google` or `co auth microsoft`), so it arrives from someone they know.
+<p align="center">
+  <img src="assets/demo.gif" alt="You ask Claude Code to hand the session to Bob; Bob gets a short note and pastes one line into Codex; Codex does the work and asks your agent a question; the patch comes back to you" width="100%">
+</p>
 
-## What they get
-
-1. **A short note from you**, in your language, with a link to a page like the one above and one line to paste.
-2. **One paste.** They open a new Codex or Claude Code conversation and paste the line. Their agent:
-   - installs co if it's missing;
-   - accepts the handoff;
-   - reads what you discussed, decided and left open;
-   - starts working in that folder.
-3. **Questions go to your agent, not to you.** Anything the session doesn't cover, their agent asks. While `co handoff status --wait` runs on your side, your agent answers from the session, and only a question that needs your decision comes to you.
-4. **The result comes back.** Their agent sends it with `co handoff done … --file result.patch`. Your status line reads "bob finished it · their file saved" and gives you the `git apply` to run.
-
-In our own test on a small task, the person receiving it did one thing: trust the folder in Codex, with "Approve for me" on. From the paste, the patch was back in under four minutes.
-
-## Follow along
+## Install
 
 ```bash
-co handoff status ho-1a2b3c4d          # accepted, questions, done
-co handoff status ho-1a2b3c4d --wait   # run in the background; returns when there is news
-co handoff answer ho-1a2b3c4d "…"      # a question only you can answer
-co handoff withdraw ho-1a2b3c4d        # take the page down
+npx skills add openonion/handoff                # the skill, for Claude Code, Codex, Cursor and more
+pip install --upgrade --pre connectonion        # the co CLI it runs (co handoff ships in the 1.9.2 preview)
 ```
 
-## The skill
-
-`handoff` is a plain `SKILL.md`, the format Claude Code and Codex load. With it installed, you just ask:
-
-> "Hand this to Bob."
-> "Pass the login task to priya@example.com."
-> "交给 Bob。"
-
-Your agent:
-1. prepares the handoff;
-2. shows you the exact text;
-3. sends it only after you say yes.
-
-On the receiving side, the same skill tells the agent what to do with a pasted handoff: accept it, do the work, ask when unsure, and report back when done.
+<details>
+<summary>Prefer to copy the skill by hand?</summary>
 
 ```bash
 git clone https://github.com/openonion/handoff
 cp -r handoff/skills/handoff ~/.claude/skills/     # Claude Code
 cp -r handoff/skills/handoff ~/.codex/skills/      # Codex
+```
+</details>
+
+## Use it
+
+Say it the way you would to a colleague:
+
+> **"Hand this to Bob."**
+> **"Pass the login task to priya@example.com."**
+> **"交给 Bob。"**
+
+Your agent then:
+1. drafts the handoff;
+2. shows you the exact text that would leave your machine;
+3. sends it only after you say yes.
+
+The mail goes from your own Gmail or Outlook, so it arrives from someone they know.
+
+Prefer the terminal? It's the same three steps:
+
+```bash
+co handoff send bob@example.com "the slugify rules"           # preview: exactly what will leave
+co handoff send bob@example.com --draft ho-1a2b3c4d --yes     # send it
+co handoff status ho-1a2b3c4d --wait                          # accepted, questions, done
+```
+
+## What Bob sees
+
+<p align="center">
+  <img src="assets/viewer-desktop.png" width="68%" alt="The handoff page: who passed the task, one button to copy it into Codex, and what was discussed">
+  <img src="assets/viewer-phone.png" width="24%" alt="The same page on a phone">
+</p>
+
+- **A short note from you,** in your language, with a link to this page.
+- **One button.** It copies a single line. He pastes it into a new Codex or Claude Code conversation in the folder where he wants the code.
+- **His agent does the rest:**
+  - installs co if it's missing;
+  - accepts the handoff;
+  - reads what you discussed, decided and left open;
+  - gets to work.
+
+In our own test on a small task, with Codex set to "Approve for me", the person receiving it did one thing: trust the folder. From the paste, the patch was back in under four minutes.
+
+## How it works
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#ecf8f0", "primaryBorderColor": "#0b8a3c", "primaryTextColor": "#0d1b14", "lineColor": "#0b8a3c", "actorBkg": "#ecf8f0", "actorBorder": "#0b8a3c", "signalColor": "#0b8a3c", "signalTextColor": "#0d1b14", "noteBkgColor": "#ffffff", "noteBorderColor": "#d3efdd"}}}%%
+sequenceDiagram
+    actor You
+    participant A as Your agent
+    participant B as Bob's agent
+    actor Bob
+    You->>A: "hand this to Bob"
+    A->>You: the exact text, for your yes
+    A->>Bob: a short note from your mailbox
+    Bob->>B: pastes one line
+    B->>A: accepts, then asks what the session doesn't say
+    A-->>B: answers from the session
+    B->>A: done, with result.patch
+    A->>You: "bob finished it", and the git apply to run
 ```
 
 ## You decide what leaves
@@ -76,11 +100,45 @@ cp -r handoff/skills/handoff ~/.codex/skills/      # Codex
 - **Secrets stop the send.** That covers anything credential-shaped (API keys, tokens, private keys) and the values of your secret environment variables.
 - **Other people stay out.** Their email addresses, phone numbers and IPs are masked, and so are the names of the people in your [co rem](https://github.com/openonion/corem) notebook.
 - **Only the conversation goes.** The commands your agent ran, and their output, stay on your machine.
-- **One person picks it up.** The first agent to accept a handoff holds it. Anyone else with a forwarded link is told it's taken. A handoff nobody accepts expires after a week.
+- **One person picks it up.** The first agent to accept a handoff holds it, and anyone else with a forwarded link is told it's taken. A handoff nobody accepts expires after a week.
 - **You can take it back.** `co handoff withdraw <id>` removes the page and the pickup.
+
+## Questions
+
+<details>
+<summary><b>Does Bob need an account or any setup first?</b></summary>
+
+No. The line he pastes tells his agent to install co if it's missing, then to accept the handoff. He needs Codex or Claude Code, and network access for that one install.
+</details>
+
+<details>
+<summary><b>Which agents work?</b></summary>
+
+You can send from a Claude Code or Codex session; handoff reads either one. Bob can receive in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
+</details>
+
+<details>
+<summary><b>Can I send one session to several people?</b></summary>
+
+Send one handoff per person. Each handoff is picked up by one agent, so every person gets their own, and you see each one's progress separately in `co handoff status`.
+</details>
+
+<details>
+<summary><b>What if Bob is offline, or never opens it?</b></summary>
+
+The handoff waits for him. One nobody accepts expires after a week, and you can take it down sooner with `co handoff withdraw <id>`. While his agent works, `co handoff status <id> --wait` on your side answers his questions from the session.
+</details>
+
+<details>
+<summary><b>Where does the handoff wait?</b></summary>
+
+On the OpenOnion backend, until Bob's agent picks it up. It holds what you approved: the brief, the conversation, and any code you chose to send. It doesn't hold your files or the output of your agent's commands.
+</details>
 
 ## Learn more
 
 - Guide: [docs/cli/handoff.md](https://github.com/openonion/connectonion/blob/main/docs/cli/handoff.md)
 - Code: [openonion/connectonion](https://github.com/openonion/connectonion) (handoff lives in `connectonion/handoff/`)
 - Community: [Discord](https://discord.gg/4xfD9k8AUF)
+
+<p align="center"><sub>Built by <a href="https://github.com/openonion/connectonion">ConnectOnion</a>. If handoff saved you a long explanation, a ⭐ helps other people find it.</sub></p>
