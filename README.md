@@ -1,13 +1,11 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
-    <img src="assets/banner-light.png" alt="handoff: pass your AI session to a teammate, get the work back" width="100%">
+    <img src="assets/banner-light.png" alt="handoff: hand your Claude Code session to a teammate's Codex. Redacted first, end-to-end encrypted." width="100%">
   </picture>
 </p>
 
-<h3 align="center">Your AI session, in their AI.</h3>
-
-<p align="center">Hand a Codex or Claude Code session to anyone, or to yourself on another machine.<br>Private sentences filtered. Sent only on your yes. The work comes back.</p>
+<h2 align="center">Hand your Claude Code session to a teammate's Codex.<br>Redacted first, end-to-end encrypted.</h2>
 
 <p align="center">
   <a href="#install"><img alt="npx skills add openonion/handoff" src="https://img.shields.io/badge/npx_skills_add-openonion%2Fhandoff-0b8a3c?style=flat-square"></a>
@@ -18,9 +16,9 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/handoff-dark.webp">
-    <img src="assets/handoff-light.webp" alt="Aaron types $handoff to Bob in Codex; private sentences are removed; he says yes; the handoff flies to Bob, whose Codex opens Aaron's conversation; Bob's agent asks, works and sends the patch back; Aaron applies it" width="100%">
+    <img src="assets/handoff-light.webp" alt="Real Codex on two laptops: Aaron types $handoff this to bob; his own Codex takes the dentist sentence out; he says yes; Bob pastes one line into his Codex, which picks up Aaron's conversation, finishes the work and sends it back; Aaron's Codex applies it" width="100%">
   </picture>
-  <br><sub><a href="assets/handoff.mp4">Watch it in full quality</a> · replayed from real <code>co handoff</code> output; names, ids and the task are examples</sub>
+  <br><sub><a href="assets/handoff.mp4">Watch it with sound</a> · recorded in real Codex with two test accounts on co 1.9.2b30; the waiting is fast-forwarded</sub>
 </p>
 
 <p align="center"><sub>HAND OFF A SESSION FROM</sub></p>
@@ -35,13 +33,16 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/grok-dark.png"><img src="assets/agents/grok-light.png" alt="Grok" width="96"></picture>
 </p>
 
-<p align="center"><sub>Codex and Claude Code today; the others in the next preview.</sub></p>
+<p align="center"><sub>Codex and Claude Code, tested end to end. Gemini CLI, Cursor, opencode, droid and Grok sessions are new in this preview.</sub></p>
 
 ## Install
 
 ```bash
-npx skills add openonion/handoff            # the skill
-pip install --upgrade --pre connectonion    # the co CLI it runs
+# the skill
+npx skills add openonion/handoff
+
+# the co CLI it runs
+pip install --upgrade --pre connectonion
 ```
 
 Then tell your agent: **"Hand this to Bob."**
@@ -104,6 +105,12 @@ A short note from you with a link to this page, and one button that copies a sin
 </details>
 
 <details>
+<summary><b>Where it goes in between</b></summary>
+
+The handoff waits on ConnectOnion's backend, so Bob can pick it up while you're offline. One nobody accepts expires after 7 days. Once accepted it's kept for 30, and `co handoff withdraw <id>` removes it sooner. End-to-end encryption for the handoff itself lands in the next release; direct agent-to-agent connections are already sealed. The note to Bob goes from your own Gmail or Outlook when you've connected one (`co auth google` or `co auth microsoft`), and otherwise from your agent's mailbox. The preview tells you which.
+</details>
+
+<details>
 <summary><b>Does Bob need an account or any setup first?</b></summary>
 
 No. The line he pastes tells his agent to install co if it's missing, then to accept the handoff. He needs Codex or Claude Code, and network access for that one install.
@@ -112,7 +119,7 @@ No. The line he pastes tells his agent to install co if it's missing, then to ac
 <details>
 <summary><b>Which agents work?</b></summary>
 
-You can send from a Claude Code or Codex session today. Gemini CLI, opencode, droid and Cursor sessions come in the next preview, and Grok is on its way. Bob can receive in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
+You can send from a Claude Code or Codex session, both tested end to end. This preview also reads Gemini CLI, Cursor, opencode, droid and Grok sessions. Bob can receive in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
 </details>
 
 <details>
