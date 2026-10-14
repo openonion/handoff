@@ -17,11 +17,16 @@ You spent the afternoon getting somewhere with your coding agent. Now someone el
 
 **handoff sends them the session itself.** That means every message you wrote, word for word, your AI's replies, and where the code is. They paste one line into Codex or Claude Code, and their agent picks up exactly where yours stopped. Anything the session doesn't answer, their agent asks yours. When the work is done, it comes back to you as a patch.
 
+<p align="center"><sub>HAND OFF A SESSION FROM</sub></p>
+
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/works-with-dark.png">
-    <img src="assets/works-with-light.png" alt="Hand off a session from Codex, Claude Code, Gemini CLI, Cursor, opencode, droid and Grok" width="100%">
-  </picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/codex-dark.png"><img src="assets/agents/codex-light.png" alt="Codex" width="96"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/claude-code-dark.png"><img src="assets/agents/claude-code-light.png" alt="Claude Code" width="96"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/gemini-cli-dark.png"><img src="assets/agents/gemini-cli-light.png" alt="Gemini CLI" width="96"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/cursor-dark.png"><img src="assets/agents/cursor-light.png" alt="Cursor" width="96"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/opencode-dark.png"><img src="assets/agents/opencode-light.png" alt="opencode" width="96"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/droid-dark.png"><img src="assets/agents/droid-light.png" alt="droid" width="96"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/grok-dark.png"><img src="assets/agents/grok-light.png" alt="Grok" width="96"></picture>
 </p>
 
 <p align="center">
