@@ -88,22 +88,12 @@ In our own test on a small task, with Codex set to "Approve for me", the person 
 
 ## How it works
 
-```mermaid
-%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#ecf8f0", "primaryBorderColor": "#0b8a3c", "primaryTextColor": "#0d1b14", "lineColor": "#0b8a3c", "actorBkg": "#ecf8f0", "actorBorder": "#0b8a3c", "signalColor": "#0b8a3c", "signalTextColor": "#0d1b14", "noteBkgColor": "#ffffff", "noteBorderColor": "#d3efdd"}}}%%
-sequenceDiagram
-    actor You
-    participant A as Your agent
-    participant B as Bob's agent
-    actor Bob
-    You->>A: "hand this to Bob"
-    A->>You: the exact text, for your yes
-    A->>Bob: a short note from your mailbox
-    Bob->>B: pastes one line
-    B->>A: accepts, then asks what the session doesn't say
-    A-->>B: answers from the session
-    B->>A: done, with result.patch
-    A->>You: "bob finished it", and the git apply to run
-```
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/flow-dark.png">
+    <img src="assets/flow-light.png" alt="1 you say hand this to Bob; 2 your agent shows you the exact text; 3 a short note goes to Bob from your own mailbox; 4 Bob pastes one line; 5 his agent asks what the session doesn't say; 6 your agent answers from the session; 7 his agent sends the result back; 8 you see bob finished it and the git apply to run" width="100%">
+  </picture>
+</p>
 
 ## You decide what leaves
 
