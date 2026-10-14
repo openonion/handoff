@@ -1,11 +1,11 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
-    <img src="assets/banner-light.png" alt="handoff: hand your Claude Code session to a teammate's Codex. Redacted first, end-to-end encrypted." width="100%">
+    <img src="assets/banner-light.png" alt="handoff: hand your Claude Code session to a teammate's Codex. Redacted first. Sent only on your yes." width="100%">
   </picture>
 </p>
 
-<h2 align="center">Hand your Claude Code session to a teammate's Codex.<br>Redacted first, end-to-end encrypted.</h2>
+<h2 align="center">Hand your Claude Code session to a teammate's Codex.<br>Redacted first. Sent only on your yes.</h2>
 
 <p align="center">
   <a href="#install"><img alt="npx skills add openonion/handoff" src="https://img.shields.io/badge/npx_skills_add-openonion%2Fhandoff-0b8a3c?style=flat-square"></a>
@@ -14,11 +14,8 @@
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/handoff-dark.webp">
-    <img src="assets/handoff-light.webp" alt="Real Codex on two laptops: Aaron types $handoff this to bob; his own Codex takes the dentist sentence out; he says yes; Bob pastes one line into his Codex, which picks up Aaron's conversation, finishes the work and sends it back; Aaron's Codex applies it" width="100%">
-  </picture>
-  <br><sub><a href="assets/handoff.mp4">Watch it with sound</a> · recorded in real Codex with two test accounts on co 1.9.2b30; the waiting is fast-forwarded</sub>
+  <img src="assets/handoff-pr.webp" alt="The PR shows what changed; your AI conversation holds why. Aaron types /handoff to bob in Claude Code; his agent takes the dentist line out; he approves the exact text; Bob pastes one line into Codex, which picks up the conversation, asks Aaron's agent why no Redis, and sends the patch back" width="100%">
+  <br><sub><a href="assets/handoff-pr.mp4">Watch it with sound</a> · illustrative UI · <a href="assets/handoff.mp4">the real recording</a>, in Codex on two laptops</sub>
 </p>
 
 <p align="center"><sub>HAND OFF A SESSION FROM</sub></p>
@@ -52,7 +49,6 @@ Then tell your agent: **"Hand this to Bob."**
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/2-dark.png"><img src="assets/features/2-light.png" alt="2. Private sentences filtered out: your own agent reads every message first and removes health, family, money and other people's details" width="100%"></picture>
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/3-dark.png"><img src="assets/features/3-light.png" alt="3. Only what you approve leaves: you see the exact text first, secrets stop the send, nothing goes without your yes" width="100%"></picture>
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/4-dark.png"><img src="assets/features/4-light.png" alt="4. It flows back by itself: their agent picks up, asks yours when unsure, and sends the work back as a patch" width="100%"></picture>
-  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/5-dark.png"><img src="assets/features/5-light.png" alt="5. End-to-end encrypted, in the next release: sealed on your machine, opened only by their agent" width="100%"></picture>
 </p>
 
 ## More
@@ -67,7 +63,7 @@ co handoff status ho-1a2b3c4d --wait                          # accepted, questi
 co handoff withdraw ho-1a2b3c4d                               # take it back
 ```
 
-The mail goes from your own Gmail or Outlook, so it arrives from someone they know.
+The mail goes from your own Gmail or Outlook when you've connected one, and from your agent's mailbox otherwise. The preview tells you which.
 </details>
 
 <details>
@@ -98,7 +94,7 @@ A short note from you with a link to this page, and one button that copies a sin
 - **Nothing goes until you approve.** You see the exact text in the preview first.
 - **Secrets stop the send.** That covers anything credential-shaped (API keys, tokens, private keys) and the values of your secret environment variables.
 - **Private sentences come out first, by your own agent.** Before you see the preview, your Codex or Claude Code reads every sentence that would go and replaces each one about health, family, personal travel, money, visas or someone else's affairs with `[removed: why]`. The preview lists where, and you can put any back.
-- **Neither side gets more than the handoff.** The other person can send messages about this one handoff and nothing else; letting them use your agent is your own `co trust add`.
+- **What each side can do afterwards.** On Bob's machine, your agent may send him handoffs and questions, and can't run anything there. On yours, Bob's agent becomes a contact of your agent, so it can do what your trust policy allows contacts to do. `co trust list --global` shows it.
 - **Other people stay out.** Their email addresses, phone numbers and IPs are masked, and so are the names of the people in your [co rem](https://github.com/openonion/corem) notebook.
 - **Only the conversation goes.** The commands your agent ran, and their output, stay on your machine.
 - **One person picks it up.** The first agent to accept a handoff holds it, and anyone else with a forwarded link is told it's taken. A handoff nobody accepts expires after a week.
@@ -108,13 +104,13 @@ A short note from you with a link to this page, and one button that copies a sin
 <details>
 <summary><b>Where it goes in between</b></summary>
 
-The handoff waits on ConnectOnion's backend, so Bob can pick it up while you're offline. One nobody accepts expires after 7 days. Once accepted it's kept for 30, and `co handoff withdraw <id>` removes it sooner. End-to-end encryption for the handoff itself lands in the next release; direct agent-to-agent connections are already sealed. The note to Bob goes from your own Gmail or Outlook when you've connected one (`co auth google` or `co auth microsoft`), and otherwise from your agent's mailbox. The preview tells you which.
+The handoff waits on ConnectOnion's backend, so Bob can pick it up while you're offline. One nobody accepts expires after 7 days. Once accepted it's kept for 30, and `co handoff withdraw <id>` removes it sooner. The handoff on the backend is not end-to-end encrypted; direct agent-to-agent connections are. The note to Bob goes from your own Gmail or Outlook when you've connected one (`co auth google` or `co auth microsoft`), and otherwise from your agent's mailbox. The preview tells you which.
 </details>
 
 <details>
 <summary><b>Does Bob need an account or any setup first?</b></summary>
 
-No. The line he pastes tells his agent to install co if it's missing, then to accept the handoff. He needs Codex or Claude Code, and network access for that one install.
+No. The line he pastes tells his agent to install co if it's missing, then to accept the handoff. He needs Codex or Claude Code, and network access to install co, fetch the handoff and send questions and the result back.
 </details>
 
 <details>
