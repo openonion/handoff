@@ -1,13 +1,16 @@
 <p align="center">
-  <img src="assets/banner.png" alt="handoff: pass your AI session to a teammate, get the work back" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
+    <img src="assets/banner-light.png" alt="handoff: pass your AI session to a teammate, get the work back" width="100%">
+  </picture>
 </p>
 
 <p align="center">
   <a href="#install"><img alt="npx skills add openonion/handoff" src="https://img.shields.io/badge/npx_skills_add-openonion%2Fhandoff-0b8a3c?style=flat-square"></a>
-  <img alt="Works with Claude Code" src="https://img.shields.io/badge/Claude_Code-works-0d1b14?style=flat-square">
-  <img alt="Works with Codex" src="https://img.shields.io/badge/Codex-works-0d1b14?style=flat-square">
-  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-0b8a3c?style=flat-square"></a>
-  <a href="https://discord.gg/4xfD9k8AUF"><img alt="Discord" src="https://img.shields.io/badge/Discord-join-0b8a3c?style=flat-square"></a>
+  <img alt="Claude Code" src="https://img.shields.io/badge/Claude_Code-0d1b14?style=flat-square">
+  <img alt="Codex" src="https://img.shields.io/badge/Codex-0d1b14?style=flat-square">
+  <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/Apache--2.0-0d1b14?style=flat-square"></a>
+  <a href="https://discord.gg/4xfD9k8AUF"><img alt="Discord" src="https://img.shields.io/badge/Discord-0b8a3c?style=flat-square"></a>
 </p>
 
 You spent the afternoon getting somewhere with your coding agent. Now someone else should carry it on, and the usual handover is a Slack essay that leaves out half of what you and the AI figured out.
@@ -15,14 +18,20 @@ You spent the afternoon getting somewhere with your coding agent. Now someone el
 **handoff sends them the session itself.** That means every message you wrote, word for word, your AI's replies, and where the code is. They paste one line into Codex or Claude Code, and their agent picks up exactly where yours stopped. Anything the session doesn't answer, their agent asks yours. When the work is done, it comes back to you as a patch.
 
 <p align="center">
-  <img src="assets/demo.gif" alt="You ask Claude Code to hand the session to Bob; Bob gets a short note and pastes one line into Codex; Codex does the work and asks your agent a question; the patch comes back to you" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/demo-dark.gif">
+    <img src="assets/demo-light.gif" alt="You ask Claude Code to hand the session to Bob; Bob gets a short note and pastes one line into Codex; Codex does the work and asks your agent a question; the patch comes back to you" width="100%">
+  </picture>
 </p>
 
 ## Install
 
 ```bash
-npx skills add openonion/handoff                # the skill, for Claude Code, Codex, Cursor and more
-pip install --upgrade --pre connectonion        # the co CLI it runs (co handoff ships in the 1.9.2 preview)
+# The skill: Claude Code, Codex, Cursor and more
+npx skills add openonion/handoff
+
+# The co CLI it runs (co handoff ships in the 1.9.2 preview)
+pip install --upgrade --pre connectonion
 ```
 
 <details>
@@ -40,7 +49,9 @@ cp -r handoff/skills/handoff ~/.codex/skills/      # Codex
 Say it the way you would to a colleague:
 
 > **"Hand this to Bob."**
+>
 > **"Pass the login task to priya@example.com."**
+>
 > **"交给 Bob。"**
 
 Your agent then:
