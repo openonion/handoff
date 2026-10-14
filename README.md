@@ -19,6 +19,13 @@ You spent the afternoon getting somewhere with your coding agent. Now someone el
 
 <p align="center">
   <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/works-with-dark.png">
+    <img src="assets/works-with-light.png" alt="Hand off a session from Codex, Claude Code, Gemini CLI, Cursor, opencode, droid and Grok" width="100%">
+  </picture>
+</p>
+
+<p align="center">
+  <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/demo-dark.gif">
     <img src="assets/demo-light.gif" alt="You ask Claude Code to hand the session to Bob; Bob gets a short note and pastes one line into Codex; Codex does the work and asks your agent a question; the patch comes back to you" width="100%">
   </picture>
@@ -115,7 +122,7 @@ No. The line he pastes tells his agent to install co if it's missing, then to ac
 <details>
 <summary><b>Which agents work?</b></summary>
 
-You can send from a Claude Code or Codex session; handoff reads either one. Bob can receive in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
+You can send from a Claude Code or Codex session today. Gemini CLI, opencode, droid and Cursor sessions come in the next preview, and Grok is on its way. Bob can receive in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
 </details>
 
 <details>
