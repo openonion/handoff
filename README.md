@@ -33,7 +33,7 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/grok-dark.png"><img src="assets/agents/grok-light.png" alt="Grok" width="96"></picture>
 </p>
 
-<p align="center"><sub>Codex and Claude Code, tested end to end. Gemini CLI, Cursor, opencode, droid and Grok sessions are new in this preview.</sub></p>
+<p align="center"><sub>All seven in connectonion 1.9.2. Bob receives in Codex or Claude Code.</sub></p>
 
 ## Install
 
@@ -42,7 +42,7 @@
 npx skills add openonion/handoff
 
 # the co CLI it runs
-pip install --upgrade --pre connectonion
+pip install --upgrade connectonion
 ```
 
 Then tell your agent: **"Hand this to Bob."**
@@ -97,7 +97,8 @@ A short note from you with a link to this page, and one button that copies a sin
 
 - **Nothing goes until you approve.** You see the exact text in the preview first.
 - **Secrets stop the send.** That covers anything credential-shaped (API keys, tokens, private keys) and the values of your secret environment variables.
-- **Private sentences come out.** Your own agent reads every message and removes health, family, money, travel and other people's details. The preview lists each removal, and `--edit` puts any back.
+- **Private sentences come out first, by your own agent.** Before you see the preview, your Codex or Claude Code reads every sentence that would go and replaces each one about health, family, personal travel, money, visas or someone else's affairs with `[removed: why]`. The preview lists where, and you can put any back.
+- **Neither side gets more than the handoff.** The other person can send messages about this one handoff and nothing else; letting them use your agent is your own `co trust add`.
 - **Other people stay out.** Their email addresses, phone numbers and IPs are masked, and so are the names of the people in your [co rem](https://github.com/openonion/corem) notebook.
 - **Only the conversation goes.** The commands your agent ran, and their output, stay on your machine.
 - **One person picks it up.** The first agent to accept a handoff holds it, and anyone else with a forwarded link is told it's taken. A handoff nobody accepts expires after a week.
@@ -119,7 +120,7 @@ No. The line he pastes tells his agent to install co if it's missing, then to ac
 <details>
 <summary><b>Which agents work?</b></summary>
 
-You can send from a Claude Code or Codex session, both tested end to end. This preview also reads Gemini CLI, Cursor, opencode, droid and Grok sessions. Bob can receive in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
+Send from a Codex, Claude Code, Gemini CLI, opencode, droid, Cursor or Grok session. Bob receives in Codex or Claude Code. The skill itself installs into any agent that `npx skills` supports.
 </details>
 
 <details>
