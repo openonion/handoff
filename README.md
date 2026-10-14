@@ -5,17 +5,23 @@
   </picture>
 </p>
 
+<h3 align="center">Your AI session, in their AI.</h3>
+
+<p align="center">Hand a Codex or Claude Code session to anyone, or to yourself on another machine.<br>Private sentences filtered. Sent only on your yes. The work comes back.</p>
+
 <p align="center">
   <a href="#install"><img alt="npx skills add openonion/handoff" src="https://img.shields.io/badge/npx_skills_add-openonion%2Fhandoff-0b8a3c?style=flat-square"></a>
-  <img alt="Claude Code" src="https://img.shields.io/badge/Claude_Code-0d1b14?style=flat-square">
-  <img alt="Codex" src="https://img.shields.io/badge/Codex-0d1b14?style=flat-square">
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/Apache--2.0-0d1b14?style=flat-square"></a>
   <a href="https://discord.gg/4xfD9k8AUF"><img alt="Discord" src="https://img.shields.io/badge/Discord-0b8a3c?style=flat-square"></a>
 </p>
 
-You spent the afternoon getting somewhere with your coding agent. Now someone else should carry it on, and the usual handover is a Slack essay that leaves out half of what you and the AI figured out.
-
-**handoff sends them the session itself.** That means every message you wrote, word for word, your AI's replies, and where the code is. They paste one line into Codex or Claude Code, and their agent picks up exactly where yours stopped. Anything the session doesn't answer, their agent asks yours. When the work is done, it comes back to you as a patch.
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/handoff-dark.webp">
+    <img src="assets/handoff-light.webp" alt="Aaron types $handoff to Bob in Codex; private sentences are removed; he says yes; the handoff flies to Bob, whose Codex opens Aaron's conversation; Bob's agent asks, works and sends the patch back; Aaron applies it" width="100%">
+  </picture>
+  <br><sub><a href="assets/handoff.mp4">Watch it in full quality</a> · replayed from real <code>co handoff</code> output; names, ids and the task are examples</sub>
+</p>
 
 <p align="center"><sub>HAND OFF A SESSION FROM</sub></p>
 
@@ -29,76 +35,53 @@ You spent the afternoon getting somewhere with your coding agent. Now someone el
   <picture><source media="(prefers-color-scheme: dark)" srcset="assets/agents/grok-dark.png"><img src="assets/agents/grok-light.png" alt="Grok" width="96"></picture>
 </p>
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/demo-dark.gif">
-    <img src="assets/demo-light.gif" alt="You ask Claude Code to hand the session to Bob; Bob gets a short note and pastes one line into Codex; Codex does the work and asks your agent a question; the patch comes back to you" width="100%">
-  </picture>
-</p>
+<p align="center"><sub>Codex and Claude Code today; the others in the next preview.</sub></p>
 
 ## Install
 
 ```bash
-# The skill: Claude Code, Codex, Cursor and more
-npx skills add openonion/handoff
-
-# The co CLI it runs (co handoff ships in the 1.9.2 preview)
-pip install --upgrade --pre connectonion
+npx skills add openonion/handoff            # the skill
+pip install --upgrade --pre connectonion    # the co CLI it runs
 ```
+
+Then tell your agent: **"Hand this to Bob."**
+
+<p align="center">
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/1-dark.png"><img src="assets/features/1-light.png" alt="1. Hand off the whole session: every message you wrote and where the code is, to a teammate or to yourself on another machine" width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/2-dark.png"><img src="assets/features/2-light.png" alt="2. Private sentences filtered out: your own agent reads every message first and removes health, family, money and other people's details" width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/3-dark.png"><img src="assets/features/3-light.png" alt="3. Only what you approve leaves: you see the exact text first, secrets stop the send, nothing goes without your yes" width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/4-dark.png"><img src="assets/features/4-light.png" alt="4. It flows back by itself: their agent picks up, asks yours when unsure, and sends the work back as a patch" width="100%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="assets/features/5-dark.png"><img src="assets/features/5-light.png" alt="5. End-to-end encrypted, in the next release: sealed on your machine, opened only by their agent" width="100%"></picture>
+</p>
+
+## More
 
 <details>
-<summary>Prefer to copy the skill by hand?</summary>
-
-```bash
-git clone https://github.com/openonion/handoff
-cp -r handoff/skills/handoff ~/.claude/skills/     # Claude Code
-cp -r handoff/skills/handoff ~/.codex/skills/      # Codex
-```
-</details>
-
-## Use it
-
-Say it the way you would to a colleague:
-
-> **"Hand this to Bob."**
->
-> **"Pass the login task to priya@example.com."**
->
-> **"交给 Bob。"**
-
-Your agent then:
-1. drafts the handoff;
-2. shows you the exact text that would leave your machine;
-3. sends it only after you say yes.
-
-The mail goes from your own Gmail or Outlook, so it arrives from someone they know.
-
-Prefer the terminal? It's the same three steps:
+<summary><b>From the terminal</b></summary>
 
 ```bash
 co handoff send bob@example.com "the slugify rules"           # preview: exactly what will leave
 co handoff send bob@example.com --draft ho-1a2b3c4d --yes     # send it
 co handoff status ho-1a2b3c4d --wait                          # accepted, questions, done
+co handoff withdraw ho-1a2b3c4d                               # take it back
 ```
 
-## What Bob sees
+The mail goes from your own Gmail or Outlook, so it arrives from someone they know.
+</details>
+
+<details>
+<summary><b>What Bob sees</b></summary>
 
 <p align="center">
   <img src="assets/viewer-desktop.png" width="68%" alt="The handoff page: who passed the task, one button to copy it into Codex, and what was discussed">
   <img src="assets/viewer-phone.png" width="24%" alt="The same page on a phone">
 </p>
 
-- **A short note from you,** in your language, with a link to this page.
-- **One button.** It copies a single line. He pastes it into a new Codex or Claude Code conversation in the folder where he wants the code.
-- **His agent does the rest:**
-  - installs co if it's missing;
-  - accepts the handoff;
-  - reads what you discussed, decided and left open;
-  - gets to work.
+A short note from you with a link to this page, and one button that copies a single line. He pastes it into Codex or Claude Code, in the folder where he wants the code. His agent installs co if it's missing, accepts the handoff and gets to work.
+</details>
 
-In our own test on a small task, with Codex set to "Approve for me", the person receiving it did one thing: trust the folder. From the paste, the patch was back in under four minutes.
-
-## How it works
+<details>
+<summary><b>How it works</b></summary>
 
 <p align="center">
   <picture>
@@ -106,17 +89,19 @@ In our own test on a small task, with Codex set to "Approve for me", the person 
     <img src="assets/flow-light.png" alt="1 you say hand this to Bob; 2 your agent shows you the exact text; 3 a short note goes to Bob from your own mailbox; 4 Bob pastes one line; 5 his agent asks what the session doesn't say; 6 your agent answers from the session; 7 his agent sends the result back; 8 you see bob finished it and the git apply to run" width="100%">
   </picture>
 </p>
+</details>
 
-## You decide what leaves
+<details>
+<summary><b>What leaves your machine</b></summary>
 
 - **Nothing goes until you approve.** You see the exact text in the preview first.
 - **Secrets stop the send.** That covers anything credential-shaped (API keys, tokens, private keys) and the values of your secret environment variables.
+- **Private sentences come out.** Your own agent reads every message and removes health, family, money, travel and other people's details. The preview lists each removal, and `--edit` puts any back.
 - **Other people stay out.** Their email addresses, phone numbers and IPs are masked, and so are the names of the people in your [co rem](https://github.com/openonion/corem) notebook.
 - **Only the conversation goes.** The commands your agent ran, and their output, stay on your machine.
 - **One person picks it up.** The first agent to accept a handoff holds it, and anyone else with a forwarded link is told it's taken. A handoff nobody accepts expires after a week.
 - **You can take it back.** `co handoff withdraw <id>` removes the page and the pickup.
-
-## Questions
+</details>
 
 <details>
 <summary><b>Does Bob need an account or any setup first?</b></summary>
@@ -143,15 +128,13 @@ The handoff waits for him. One nobody accepts expires after a week, and you can 
 </details>
 
 <details>
-<summary><b>Where does the handoff wait?</b></summary>
+<summary><b>Copy the skill by hand</b></summary>
 
-On the OpenOnion backend, until Bob's agent picks it up. It holds what you approved: the brief, the conversation, and any code you chose to send. It doesn't hold your files or the output of your agent's commands.
+```bash
+git clone https://github.com/openonion/handoff
+cp -r handoff/skills/handoff ~/.claude/skills/     # Claude Code
+cp -r handoff/skills/handoff ~/.codex/skills/      # Codex
+```
 </details>
 
-## Learn more
-
-- Guide: [docs/cli/handoff.md](https://github.com/openonion/connectonion/blob/main/docs/cli/handoff.md)
-- Code: [openonion/connectonion](https://github.com/openonion/connectonion) (handoff lives in `connectonion/handoff/`)
-- Community: [Discord](https://discord.gg/4xfD9k8AUF)
-
-<p align="center"><sub>Built by <a href="https://github.com/openonion/connectonion">ConnectOnion</a>. If handoff saved you a long explanation, a ⭐ helps other people find it.</sub></p>
+<p align="center"><sub><a href="https://github.com/openonion/connectonion/blob/main/docs/cli/handoff.md">Guide</a> · <a href="https://github.com/openonion/connectonion">Code</a> · <a href="https://discord.gg/4xfD9k8AUF">Discord</a><br>Built by <a href="https://github.com/openonion/connectonion">ConnectOnion</a>. If handoff saved you a long explanation, a ⭐ helps other people find it.</sub></p>
