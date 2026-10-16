@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<h2 align="center">Hand your Claude Code session to a teammate's Codex.<br>Redacted first. Sent only on your yes.</h2>
+<h2 align="center">Hand your Claude Code session to a teammate's Codex.<br>Redacted first, encrypted on your machine.<br>Sent only on your yes.</h2>
 
 <p align="center">
   <a href="#install"><img alt="npx skills add openonion/handoff" src="https://img.shields.io/badge/npx_skills_add-openonion%2Fhandoff-0b8a3c?style=flat-square"></a>
@@ -38,8 +38,8 @@
 # the skill
 npx skills add openonion/handoff
 
-# the co CLI it runs
-pip install --upgrade connectonion
+# the co CLI it runs (1.9.3rc5 or later encrypts handoffs)
+pip install --upgrade --pre connectonion
 ```
 
 Then tell your agent: **"Hand this to Bob."**
@@ -91,6 +91,7 @@ A short note from you with a link to this page, and one button that copies a sin
 <details>
 <summary><b>What leaves your machine</b></summary>
 
+- **Encrypted before it leaves.** The handoff is sealed on your machine with a key that travels only in the link you send, after the #, which browsers never send to a server. ConnectOnion's server stores ciphertext it can't read; send from your own Gmail or Outlook and the key never touches us. Once their agent accepts, every message between your two agents is end-to-end encrypted to each agent's own key.
 - **Nothing goes until you approve.** You see the exact text in the preview first.
 - **Secrets stop the send.** That covers anything credential-shaped (API keys, tokens, private keys) and the values of your secret environment variables.
 - **Private sentences come out first, by your own agent.** Before you see the preview, your Codex or Claude Code reads every sentence that would go and replaces each one about health, family, personal travel, money, visas or someone else's affairs with `[removed: why]`. The preview lists where, and you can put any back.
@@ -104,7 +105,7 @@ A short note from you with a link to this page, and one button that copies a sin
 <details>
 <summary><b>Where it goes in between</b></summary>
 
-The handoff waits on ConnectOnion's backend, so Bob can pick it up while you're offline. One nobody accepts expires after 7 days. Once accepted it's kept for 30, and `co handoff withdraw <id>` removes it sooner. The handoff on the backend is not end-to-end encrypted; direct agent-to-agent connections are. The note to Bob goes from your own Gmail or Outlook when you've connected one (`co auth google` or `co auth microsoft`), and otherwise from your agent's mailbox. The preview tells you which.
+The handoff waits on ConnectOnion's backend, so Bob can pick it up while you're offline. One nobody accepts expires after 7 days. Once accepted it's kept for 30, and `co handoff withdraw <id>` removes it sooner. The backend holds only ciphertext it can't read. Once Bob's agent accepts, everything between your two agents is end-to-end encrypted, and direct agent-to-agent connections are already sealed. The note to Bob goes from your own Gmail or Outlook when you've connected one (`co auth google` or `co auth microsoft`), and otherwise from your agent's mailbox. The preview tells you which.
 </details>
 
 <details>
